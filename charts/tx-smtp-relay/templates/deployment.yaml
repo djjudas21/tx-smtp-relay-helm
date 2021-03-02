@@ -47,6 +47,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tx-smtp-relay.fullname" . }}
                   key: smtp-relay-username
+            - name: TX_SMTP_RELAY_MYNETWORKS
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tx-smtp-relay.fullname" . }}
+                  key: smtp-relay-mynetworks
             - name: TX_SMTP_RELAY_PASSWORD
               valueFrom:
                 secretKeyRef:

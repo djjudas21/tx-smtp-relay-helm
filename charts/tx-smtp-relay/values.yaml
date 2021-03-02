@@ -13,6 +13,10 @@ smtp:
   password: ""
   # Hostname of THIS relay SMTP server
   myhostname: ""
+  # Networks to permit relaying from - by default just localhost and Kubernetes
+  mynetworks:
+    - 127.0.0.0/8
+    - 10.0.0.0/8
 
 image:
   repository: djjudas21/tx-smtp-relay
