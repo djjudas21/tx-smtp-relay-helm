@@ -31,18 +31,35 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: TX_SMTP_RELAY_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tx-smtp-relay.fullname" . }}
+                  key: smtp-relay-host
+            - name: TX_SMTP_RELAY_MYHOSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tx-smtp-relay.fullname" . }}
+                  key: smtp-relay-myhostname
+            - name: TX_SMTP_RELAY_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tx-smtp-relay.fullname" . }}
+                  key: smtp-relay-username
+            - name: TX_SMTP_RELAY_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "tx-smtp-relay.fullname" . }}
+                  key: smtp-relay-password
           ports:
-            - name: http
-              containerPort: 80
+            - name: smtp
+              containerPort: 25
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
+#          readinessProbe:
+            #httpGet:
+              #path: /
+              #port: smtp
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

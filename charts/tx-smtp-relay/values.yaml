@@ -4,11 +4,21 @@
 
 replicaCount: 1
 
+smtp:
+  # Hostname of SMTP server to relay to
+  host: ""
+  # Username for SMTP server to relay to
+  username: ""
+  # Password for SMTP server to relay to
+  password: ""
+  # Hostname of THIS relay SMTP server
+  myhostname: ""
+
 image:
-  repository: nginx
+  repository: applariat/tx-smtp-relay
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -38,7 +48,8 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
+  loadBalancerIP: ""
+  port: 25
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
