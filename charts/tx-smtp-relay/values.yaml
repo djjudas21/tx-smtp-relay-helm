@@ -15,10 +15,10 @@ smtp:
   myhostname: ""
 
 image:
-  repository: applariat/tx-smtp-relay
+  repository: djjudas21/tx-smtp-relay
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
+  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
