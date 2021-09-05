@@ -2,6 +2,16 @@ apiVersion: v1
 entries:
   tx-smtp-relay:
   - apiVersion: v2
+    appVersion: 0.4.0
+    created: "2021-09-05T20:45:55.029530128Z"
+    description: A Helm chart for Kubernetes
+    digest: f3ed2c63501f5887ba9aeb5a66747af327490b264f7ecaedb887d36ca3e538bf
+    name: tx-smtp-relay
+    type: application
+    urls:
+    - https://github.com/djjudas21/tx-smtp-relay-helm/releases/download/tx-smtp-relay-0.2.2/tx-smtp-relay-0.2.2.tgz
+    version: 0.2.2
+  - apiVersion: v2
     appVersion: 0.3.0
     created: "2021-03-02T20:40:01.472797481Z"
     description: A Helm chart for Kubernetes
