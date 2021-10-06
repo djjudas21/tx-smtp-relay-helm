@@ -52,6 +52,16 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tx-smtp-relay.fullname" . }}
                   key: smtp-relay-mynetworks
+            - name: TX_SMTP_RELAY_WRAPPERMODE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tx-smtp-relay.fullname" . }}
+                  key: smtp-relay-tls-wrappermode
+            - name: TX_SMTP_TLS_SECURITY_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tx-smtp-relay.fullname" . }}
+                  key: smtp-relay-tls-security-level
             - name: TX_SMTP_RELAY_PASSWORD
               valueFrom:
                 secretKeyRef:
